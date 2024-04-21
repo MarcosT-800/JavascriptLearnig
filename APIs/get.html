@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Lista de usuários</h2>
+    <div id="users"></div>
+</body>
+<script>
+    const url = 'https://jsonplaceholder.typicode.com/posts';
+
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        const usersDiv = document.getElementById('users');
+        data.forEach(user => {
+            const p = document.createElement('p');
+            p.textContent = user.title;
+            usersDiv.appendChild(p);
+        });
+    })
+    .catch(error => console.error('Erro na requisição, ', error));
+</script>
+</html>
